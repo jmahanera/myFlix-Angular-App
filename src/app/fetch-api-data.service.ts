@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com/';
@@ -24,8 +23,6 @@ export class FetchApiDataService {
       .post(apiUrl + 'users', userDetails)
       .pipe(catchError(this.handleError));
   }
-
-  
 
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
