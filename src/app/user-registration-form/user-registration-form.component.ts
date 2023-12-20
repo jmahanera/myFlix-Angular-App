@@ -1,5 +1,3 @@
-// src/app / user - registration - form / user - registration - form.component.ts;
-
 import { Component, OnInit, Input } from '@angular/core';
 
 // You'll use this import to close the dialog on success
@@ -28,19 +26,28 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {}
 
   // This is the function responsible for sending the form inputs to the backend
+  /**
+   * This method will send the form inputs to the backend
+   * @param void
+   * @returns user object
+   * @memberof UserRegistrationFormComponent
+   * @see FetchApiDataService.registerUser()
+   * @example registerUser()
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
-      (response) => {
+      (result) => {
+        console.log(result);
         // Logic for a successful user registration goes here! (To be implemented)
         this.dialogRef.close(); // This will close the modal on success!
-        console.log(response);
-        this.snackBar.open('User regiseterd Successfully!', 'OK', {
+
+        this.snackBar.open('User successfully registered', 'OK', {
           duration: 2000,
         });
       },
-      (response) => {
-        console.log(response);
-        this.snackBar.open(response, 'OK', {
+      (result) => {
+        console.log(result);
+        this.snackBar.open(result, 'OK', {
           duration: 2000,
         });
       }
