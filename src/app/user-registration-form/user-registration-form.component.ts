@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserRegistrationService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-user-registration-form',
@@ -9,10 +9,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-registration-form.component.scss'],
 })
 export class UserRegistrationFormComponent implements OnInit {
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+  @Input() userData = { username: '', password: '', email: '', birthdate: '' };
 
+  /**
+   *
+   * @param fetchApiData
+   * @param dialogRef
+   * @param snackBar
+   */
   constructor(
-    public fetchApiData: FetchApiDataService,
+    public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar
   ) {}
@@ -21,30 +27,26 @@ export class UserRegistrationFormComponent implements OnInit {
   // This is the function responsible for sending the form inputs to the backend
   /**
    * This method will send the form inputs to the backend
-   * @param void
+   *
    * @returns user object
-   * @memberof UserRegistrationFormComponent
-   * @see FetchApiDataService.registerUser()
-   * @example registerUser()
+   *
    */
 
   registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe({
-      next: (result) => {
-        console.log('Registration successful:', result);
+    this.fetchApiData.userRegistration(this.userData).subscribe(
+      (result: any) => {
+        console.log(result);
         // Logic for a successful user registration goes here! (To be implemented)
         this.dialogRef.close(); // This will close the modal on success!
-
         this.snackBar.open('User successfully registered', 'OK', {
           duration: 2000,
         });
       },
-      error: (result) => {
-        console.error('Registration error:', result);
-        this.snackBar.open(result, 'OK', {
+      () => {
+        this.snackBar.open('User registration successful', 'OK', {
           duration: 2000,
         });
-      },
-    });
+      }
+    );
   }
 }
