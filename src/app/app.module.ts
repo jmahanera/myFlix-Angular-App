@@ -32,7 +32,7 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
     MatSnackBarModule,
     FormsModule,
   ],
-  providers: [provideClientHydration()],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
