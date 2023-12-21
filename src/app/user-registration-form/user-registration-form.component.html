@@ -5,22 +5,24 @@
   <mat-card-content>
     <form>
       <mat-form-field>
-        <input matInput [(ngModel)]="userData.Username" placeholder="Username" type="text" name="Username" required>
+        <input matInput [(ngModel)]="userData.username" placeholder="username" type="text" name="username" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="userData.Password" minlength="8" type="password" placeholder="Password"
-          name="Password" required>
+        <input matInput [(ngModel)]="userData.password" minlength="8" type="password" placeholder="password"
+          name="password" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="userData.Email" type="email" placeholder="Email" name="Email" required>
+        <input matInput [(ngModel)]="userData.email" type="email" placeholder="email" name="email" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="userData.Birthday" type="date" placeholder="Birthday" name="Birthday">
+        <input matInput [(ngModel)]="userData.birthdate" type="date" placeholder="birthdate" name="birthdate">
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="registerUser()" color="primary" type="button">
+    <button mat-raised-button (click)="registerUser()" 
+    class="button-profile" 
+    >
   Sign Up
 </button>
 
