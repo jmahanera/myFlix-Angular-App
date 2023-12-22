@@ -8,7 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 
 // Declaring the api url that will provide data for the client app
-const apiUrl = 'http://localhost:8080/';
+const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root',
