@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {
   HttpClient,
@@ -7,24 +8,18 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
-// Declaring the api url that will provide data for the client app
 const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  // Inject the HttpClient module to the constructor params
-  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
-  /**
-   * Making the api call for the user login
-   * @param userDetails
-   * @returns a user data who has login with credentials and the token for the user
-   */
-  // Making api call for the user login
-  public userLogin(username: string, password: string): Observable<any> {
+  public userLogin(userDetails: any): Observable<any> {
+    // Make sure 'username' and 'password' are properties of userDetails
+    const { username, password } = userDetails;
+
     return this.http
       .post(apiUrl + 'login', { username, password })
       .pipe(catchError(this.handleError));
@@ -42,14 +37,13 @@ export class FetchApiDataService {
   }
 }
 
+@Injectable({
+  providedIn: 'root',
+})
 export class UserRegistrationService {
-  // Inject the HttpClient module to the constructor params
-  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
-  // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
     return this.http
       .post(apiUrl + 'users', userDetails)
       .pipe(catchError(this.handleError));
