@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs'; // Add this line
 import { catchError } from 'rxjs/operators';
 import {
   HttpClient,
@@ -15,16 +14,8 @@ const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com/';
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  private userData = new BehaviorSubject<Object>({
-    username: '',
-    password: '',
-    email: '',
-    birthdate: '',
-  });
-  currentUser = this.userData.asObservable();
-
-  private movies = new BehaviorSubject<Object>({});
-  moviesList = this.movies.asObservable();
+  // Inject the HttpClient module to the constructor params
+  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   /**
@@ -33,9 +24,9 @@ export class FetchApiDataService {
    * @returns a user data who has login with credentials and the token for the user
    */
   // Making api call for the user login
-  public userLogin(userDetails: any): Observable<any> {
+  public userLogin(username: string, password: string): Observable<any> {
     return this.http
-      .post(apiUrl + 'login', userDetails)
+      .post(apiUrl + 'login', { username, password })
       .pipe(catchError(this.handleError));
   }
 
