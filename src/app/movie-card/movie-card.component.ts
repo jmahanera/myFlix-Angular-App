@@ -1,11 +1,10 @@
-// movie-card.component.ts
 import { Component, OnInit } from '@angular/core';
 import { GetAllMoviesService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss'],
+  styleUrls: ['./movie-card.component.scss'], // Corrected from 'styleUrl' to 'styleUrls'
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
@@ -19,7 +18,7 @@ export class MovieCardComponent implements OnInit {
   getMovies(): void {
     this.fetchMovies.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies); // Log movies to the console
+      console.log(this.movies);
     });
   }
 }
