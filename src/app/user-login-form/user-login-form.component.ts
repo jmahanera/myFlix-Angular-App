@@ -1,4 +1,3 @@
-import { Token } from '@angular/compiler';
 // user-login-form.component.ts
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss'],
-  providers: [UserLoginService], // Provide the service here
+  providers: [UserLoginService],
 })
 export class UserLoginFormComponent implements OnInit {
   @Input() loginData = { username: '', password: '' };
@@ -34,7 +33,7 @@ export class UserLoginFormComponent implements OnInit {
         this.snackBar.open('User Login Successful!!!', 'OK', {
           duration: 2000,
         });
-        this.router.navigate(['movies']);
+        this.router.navigate(['movies']); // Corrected navigation syntax
       },
       (result) => {
         this.snackBar.open('User Login Failed!', 'OK', { duration: 4000 });
