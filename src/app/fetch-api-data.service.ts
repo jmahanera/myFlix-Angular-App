@@ -1,7 +1,10 @@
-// fetch-api-data.service.ts
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
 const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com/';
@@ -35,6 +38,56 @@ export class UserLoginService {
     return this.http
       .post(apiUrl + 'login', userDetails)
       .pipe(
+        catchError((error: HttpErrorResponse) =>
+          this.errorHandler.handleError(error)
+        )
+      );
+  }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class GetAllMoviesService {
+  constructor(
+    private http: HttpClient,
+    private errorHandler: ErrorHandlerService
+  ) {}
+
+  getAllMovies(): Observable<any> {
+    const token = localStorage.getItem('token');
+    console.log('Token:', token);
+
+    return this.http
+      .get(apiUrl + 'movies', {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(
+        map((res: Response | any) => this.extractResponseData(res)),
+        catchError((error: HttpErrorResponse) =>
+          this.errorHandler.handleError(error)
+        )
+      );
+  }
+
+  private extractResponseData(res: Response | any): any {
+    const body = res.body ? res.body : res;
+    return body || {};
+  }
+
+  // Making the API call for the get one movie endpoint
+  getOneMovie(title: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http
+      .get(apiUrl + 'movies/' + title, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(
+        map((res: Response | any) => this.extractResponseData(res)),
         catchError((error: HttpErrorResponse) =>
           this.errorHandler.handleError(error)
         )
