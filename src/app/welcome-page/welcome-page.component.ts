@@ -4,11 +4,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserLoginFormComponent } from '../user-login-form/user-login-form.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: '../app.component.html',
-  styleUrls: ['../app.component.scss'],
+  selector: 'app-welcome-page',
+  templateUrl: './welcome-page.component.html',
+  styleUrls: ['./welcome-page.component.scss'],
 })
-export class AppComponent {
+export class WelcomePageComponent {
   title = 'myFlix-Angular-client';
 
   constructor(public dialog: MatDialog) {}
