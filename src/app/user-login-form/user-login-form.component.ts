@@ -1,49 +1,37 @@
+// user-login-form.component.ts
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-// You'll use this import to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
-
-// This import brings in the API calls we created in 6.2
-import { FetchApiDataService } from '../fetch-api-data.service';
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserLoginService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
-  styleUrl: './user-login-form.component.scss',
+  styleUrls: ['./user-login-form.component.scss'],
+  providers: [UserLoginService], // Provide the service here
 })
 export class UserLoginFormComponent implements OnInit {
   @Input() loginData = { username: '', password: '' };
 
   constructor(
-    public fetchApi: FetchApiDataService, // Update this line
+    public fetchApiData: UserLoginService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar,
-    private router: Router
+    public snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
 
-  /**
-   *Login user with credentials,  after succeccfully login, navigate to home page
-   *@param loginData
-   *@returns current user data
-   */
-
-  // This is the function responsible for sending the form inputs to the backend
-  public loginUser(): void {
-    this.fetchApi.userLogin(this.loginData).subscribe(
+  loginUser(): void {
+    this.fetchApiData.userLogin(this.loginData).subscribe(
       (result) => {
-        // Successfully login done
-        localStorage.setItem('user', JSON.stringify(result.user));
-        localStorage.setItem('token', result.token);
+        console.log(result);
         this.dialogRef.close();
-        this.snackBar.open('Login successful!!!', 'OK', { duration: 2000 }); // Update this line
-        this.router.navigate(['movies']);
+        this.snackBar.open('User Login Successful!!!', 'OK', {
+          duration: 2000,
+        });
       },
-      (response) => {
-        this.snackBar.open(response, 'OK', { duration: 2000 });
+      (error) => {
+        this.snackBar.open('User Login Failed!', 'OK', { duration: 4000 });
       }
     );
   }
