@@ -1,8 +1,10 @@
+import { Token } from '@angular/compiler';
 // user-login-form.component.ts
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserLoginService } from '../fetch-api-data.service';
+import { SlowBuffer } from 'buffer';
 
 @Component({
   selector: 'app-user-login-form',
@@ -25,6 +27,8 @@ export class UserLoginFormComponent implements OnInit {
     this.fetchApiData.userLogin(this.loginData).subscribe(
       (result) => {
         console.log(result);
+        LocalStorage.setItem('user', result.user.username);
+        LocalStorage.setItem('token', result.token);
         this.dialogRef.close();
         this.snackBar.open('User Login Successful!!!', 'OK', {
           duration: 2000,
