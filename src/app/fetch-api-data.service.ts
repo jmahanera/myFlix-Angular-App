@@ -1,3 +1,4 @@
+// fetch-api-data.service.ts
 import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import {
@@ -73,11 +74,9 @@ export class GetAllMoviesService {
   }
 
   private extractResponseData(res: Response | any): any {
-    const body = res.body ? res.body : res;
-    return body || {};
+    return res.body || {};
   }
 
-  // Making the API call for the get one movie endpoint
   getOneMovie(title: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
