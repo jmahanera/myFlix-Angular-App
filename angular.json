@@ -27,7 +27,7 @@
             "outputPath": "dist/my-flix-angular-client",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "baseHref": "/myFlix-Angular-client/",
+
             "polyfills": [
               "zone.js"
             ],
@@ -47,7 +47,6 @@
             "ssr": {
               "entry": "server.ts"
             }
-
           },
           "configurations": {
             "production": {
@@ -109,6 +108,13 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+
+        "deploy": {
+          "builder": "@angular/cli:deploy",
+          "options": {
+            "baseHref": "/myFlix-Angular-client/"
           }
         }
       }
