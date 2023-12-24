@@ -99,7 +99,7 @@
           }
         },
         "deploy": {
-          "builder": "@angular/cli:deploy",
+          "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/myFlix-Angular-client/"
           }
