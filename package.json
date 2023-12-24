@@ -20,6 +20,6 @@
     "@angular/core": "^17.0.8"
   },
   "devDependencies": {
-    "typescript": "^5.3.3"
+    "typescript": "^5.2.0"
   }
 }
