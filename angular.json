@@ -46,9 +46,11 @@
             "ssr": {
               "entry": "server.ts"
             }
+
           },
           "configurations": {
             "production": {
+            "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",
