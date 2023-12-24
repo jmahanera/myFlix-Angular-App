@@ -36,6 +36,7 @@ export class UserLoginFormComponent implements OnInit {
         this.router.navigate(['movies']); // Corrected navigation syntax
       },
       (result) => {
+        this.dialogRef.close();
         this.snackBar.open('User Login Failed!', 'OK', { duration: 4000 });
       }
     );
