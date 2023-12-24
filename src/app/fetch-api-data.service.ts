@@ -1,4 +1,3 @@
-// fetch-api-data.service.ts
 import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import {
@@ -56,13 +55,13 @@ export class GetAllMoviesService {
   ) {}
 
   getAllMovies(): Observable<any> {
-    const token = localStorage.getItem('token');
+    const token = localStorage ? localStorage.getItem('token') : null;
     console.log('Token:', token);
 
     return this.http
       .get(apiUrl + 'movies', {
         headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
+          Authorization: token ? 'Bearer ' + token : '',
         }),
       })
       .pipe(
@@ -74,11 +73,16 @@ export class GetAllMoviesService {
   }
 
   private extractResponseData(res: Response | any): any {
-    return res.body || {};
+    const body = res.body ? res.body : res;
+    return body || {};
   }
 
+  // Making the API call for the get one movie endpoint
   getOneMovie(title: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const headers = token
+      ? new HttpHeaders({ Authorization: 'Bearer ' + token })
+      : undefined;
     return this.http
       .get(apiUrl + 'movies/' + title, {
         headers: new HttpHeaders({
