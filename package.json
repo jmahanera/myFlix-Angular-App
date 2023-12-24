@@ -16,7 +16,8 @@
     "@angular/forms": "^17.0.8",
     "@angular/material": "^17.0.4",
     "@angular/router": "^17.0.8",
-    "npm-check-updates": "^16.14.12"
+    "npm-check-updates": "^16.14.12",
+    "@angular/core": "^17.0.8"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
