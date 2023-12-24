@@ -105,9 +105,36 @@
           }
         }
       }
-    }
+    },
+    "your-project-name": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+
+          }
+
+        }
+
+
   },
   "cli": {
     "analytics": "cd62657e-ee0b-4476-8419-691298ebd5b8"
   }
-}
+}}}
