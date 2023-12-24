@@ -27,6 +27,7 @@
             "outputPath": "dist/my-flix-angular-client",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/myFlix-Angular-client/",
             "polyfills": [
               "zone.js"
             ],
@@ -50,7 +51,6 @@
           },
           "configurations": {
             "production": {
-            "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",
