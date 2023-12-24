@@ -17,10 +17,14 @@
     "@angular/core": "^17.0.8",
     "@angular/forms": "^17.0.8",
     "@angular/material": "^17.0.4",
+    "@angular/platform-browser-dynamic": "^17.0.8",
+    "@angular/platform-server": "^17.0.8",
     "@angular/router": "^17.0.8",
+    "@angular/ssr": "^17.0.8",
     "npm-check-updates": "^16.14.12"
   },
   "devDependencies": {
-    "typescript": "^5.2.0"
+    "@angular-devkit/build-angular": "^17.0.8",
+    "typescript": "~5.2.0"
   }
 }
