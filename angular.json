@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/",
+            "outputPath": "dist/my-flix-angular-client",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -105,10 +105,41 @@
           }
         }
       }
-    }
+    },
+    "your-project-name": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+
+          }
+
+        }
+
+
   },
   "cli": {
     "analytics": "cd62657e-ee0b-4476-8419-691298ebd5b8"
-
   }
+}
+},
+"cli": {
+"analytics": "c49a0fc0-f918-466c-9498-c58b5d0a8ddc"
+}
 }
