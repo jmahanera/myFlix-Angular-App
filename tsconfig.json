@@ -30,7 +30,7 @@
     "build": {
       "builder": "@angular-devkit/build-angular:browser",
       "options": {
-        "tsConfig": "src/tsconfig.app.json"
+        "tsConfig": "tsconfig.app.json"
         // other options...
       }
     }
