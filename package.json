@@ -1,5 +1,5 @@
 {
-  "name": "myflix-angular-app",
+  "name": "myflix-angular-client",
   "version": "1.0.0",
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.",
   "main": "index.js",
