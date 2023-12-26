@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "myFlix-Angular-client": {
+    "myFlix-Angular-App": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
