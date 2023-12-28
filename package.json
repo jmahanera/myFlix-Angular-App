@@ -22,12 +22,12 @@
     "@angular/platform-server": "^17.0.8",
     "@angular/router": "^17.0.8",
     "@angular/ssr": "^17.0.8",
-    "npm-check-updates": "^16.14.12"
+    "npm-check-updates": "^16.14.12",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.8",
     "@angular/cli": "^17.0.8",
-    "angular-cli-ghpages": "^1.0.7",
-    "typescript": "^5.2.2"
+    "angular-cli-ghpages": "^1.0.7"
   }
 }
